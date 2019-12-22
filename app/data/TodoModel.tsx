@@ -1,39 +1,31 @@
+import * as Yup from 'yup';
+
 export class TodoData {
 
   constructor(
     readonly id: number,
     readonly title: string,
     readonly description: string,
-    readonly progress: number,
-  ) {
+    readonly progress: number
+  ) {}
 
+  static empty(): TodoData {
+    const now = new Date();
+    return new TodoData(now.getTime(), '', '', 0);
   }
 
-  static mocked0(): TodoData {
-    return new TodoData(
-      0,
-      'Learn React Navigation 5',
-      'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
-      33,
-    );
-  }
-
-  static mocked1(): TodoData {
-    return new TodoData(
-      1,
-      'Learn UI Kitten 4',
-      'It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-      79,
-    );
-  }
-
-  static mocked2(): TodoData {
-    return new TodoData(
-      1,
-      'Learn Eva Design System',
-      'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content here, content here\', making it look like readable English.',
-      62,
-    );
+  static with(todo?: TodoData): TodoData {
+    if(todo !== undefined) {
+      return new TodoData(todo.id, todo.title, todo.description, todo.progress);
+    } else {
+      return this.empty();
+    }
   }
 }
+
+export const TodoDataSchema = Yup.object().shape({
+  title: Yup.string().required(),
+  description: Yup.string().required(),
+  progress: Yup.number().required().moreThan(-1, 'Mininum zero allowed').lessThan(101, 'Maximum hundred allowed')
+});
 

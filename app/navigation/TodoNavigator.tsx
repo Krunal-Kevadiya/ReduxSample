@@ -4,17 +4,20 @@ import { TodoTabNavigationProp } from './HomeNavigator';
 import { AppRoute } from './AppRoute';
 import { CompositeNavigationProp, RouteProp } from '@react-navigation/core';
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
-import { TodoDetailsRouteParams, TodoDetailsScreen, TodoDoneScreen, TodoInProgressScreen, TodoTabBar } from '../module';
+import { TodoDetailsRouteParams, TodoDetailsScreen, TodoDoneScreen, 
+  TodoInProgressScreen, TodoTabBar, AddTodoScreen, AddTodoRouteParams 
+} from '../module';
 import { createMaterialTopTabNavigator, MaterialTopTabBarProps, MaterialTopTabNavigationProp } from '@react-navigation/material-top-tabs';
 
 type TodoNavigatorParams = {
   [AppRoute.TODO]: undefined;
-  [AppRoute.TODO_DETAILS]: TodoDetailsRouteParams;
+  [AppRoute.TODO_ADD]: AddTodoRouteParams;
+  [AppRoute.TODO_DETAILS]: TodoDetailsRouteParams
 }
 
 type TodoTabsNavigatorParams = {
   [AppRoute.TODO_IN_PROGRESS]: undefined;
-  [AppRoute.TODO_DONE]: undefined;
+  [AppRoute.TODO_DONE]: undefined
 }
 
 export type TodoScreenProps = MaterialTopTabBarProps & {
@@ -25,6 +28,12 @@ export interface TodoInProgressScreenProps {
   navigation: CompositeNavigationProp<TodoTabNavigationProp,
     MaterialTopTabNavigationProp<TodoTabsNavigatorParams, AppRoute.TODO_IN_PROGRESS>>;
   route: RouteProp<TodoTabsNavigatorParams, AppRoute.TODO_IN_PROGRESS>;
+  isReduxSauce: boolean;
+}
+
+export interface AddTodoScreenProps {
+  navigation: StackNavigationProp<TodoNavigatorParams, AppRoute.TODO_ADD>;
+  route: RouteProp<TodoNavigatorParams, AppRoute.TODO_ADD>;
 }
 
 export interface TodoDoneScreenProps {
@@ -71,5 +80,6 @@ export const TodoNavigator = (): React.ReactElement => (
   <Stack.Navigator headerMode='none'>
     <Stack.Screen name={AppRoute.TODO} component={TodoTabsNavigator}/>
     <Stack.Screen name={AppRoute.TODO_DETAILS} component={TodoDetailsScreen}/>
+    <Stack.Screen name={AppRoute.TODO_ADD} component={AddTodoScreen}/>  
   </Stack.Navigator>
 );

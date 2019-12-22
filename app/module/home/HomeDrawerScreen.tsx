@@ -17,7 +17,7 @@ export const HomeDrawer = (props: DrawerHomeScreenProps): DrawerElement => {
 
   const onMenuItemSelect = (index: number): void => {
     const selectedTabRoute: string = props.state.routeNames[index];
-    props.navigation.navigate(selectedTabRoute);
+    props.navigation.navigate(selectedTabRoute, { 'ScreenType': selectedTabRoute });
     props.navigation.closeDrawer();
   };
 

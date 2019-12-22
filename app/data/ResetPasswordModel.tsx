@@ -5,12 +5,10 @@ export class ResetPasswordData {
   }
 
   static empty(): ResetPasswordData {
-    return new ResetPasswordData(
-      '',
-    );
+    return new ResetPasswordData('');
   }
 }
 
 export const ResetPasswordDataSchema = Yup.object().shape({
-  email: Yup.string().email('Invalid email'),
+  email: Yup.string().email('Invalid email').required()
 });

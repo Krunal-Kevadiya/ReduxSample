@@ -1,8 +1,6 @@
 import React from 'react';
-import {
-  Icon,
-  IconElement,
-} from 'react-native-ui-kitten';
+import { Icon, IconElement } from 'react-native-ui-kitten';
+import styles from 'app/module/about/AboutStyles';
 
 const BackIcon = (style): IconElement => (
   <Icon {...style} name='arrow-back'/>

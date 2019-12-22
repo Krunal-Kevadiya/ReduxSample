@@ -24,6 +24,7 @@ export const FormInput = ({ id, ...inputProps }: FormInputProps): InputElement =
       {...inputProps}
       {...fieldProps}
       caption={error}
+      size='small'
       onChangeText={formContext.handleChange(id)}
     />
   );

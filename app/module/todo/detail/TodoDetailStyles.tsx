@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { verticalScale, horizontalScale } from '../../theme';
+import { verticalScale, horizontalScale } from '../../../theme';
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -22,6 +22,9 @@ const styles = StyleSheet.create({
   progressBar: {
     width: '50%',
     marginVertical: verticalScale(16)
+  },
+  submitButton: {
+    marginVertical: verticalScale(5),
   }
 });
 

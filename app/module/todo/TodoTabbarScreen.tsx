@@ -6,7 +6,7 @@ import { SafeAreaLayout, SafeAreaLayoutElement, SaveAreaInset, Toolbar, ToolbarM
 
 export const TodoTabBar = (props: TodoScreenProps): SafeAreaLayoutElement => {
   const menu: ToolbarMenu = [
-    { title: 'About', icon: Icons.infoIcon },
+    { title: 'Add', icon: Icons.plusIcon },
     { title: 'Log Out', icon: Icons.logoutIcon },
   ];
 
@@ -17,6 +17,9 @@ export const TodoTabBar = (props: TodoScreenProps): SafeAreaLayoutElement => {
       case 'Log Out':
         props.navigation.navigate(AppRoute.AUTH);
         break;
+      case 'Add':
+        props.navigation.navigate(AppRoute.TODO_ADD, { isReduxSauce: false, todo: undefined });
+        break;  
       default:
         props.navigation.navigate(selectedItem.title);
         break;
@@ -25,7 +28,7 @@ export const TodoTabBar = (props: TodoScreenProps): SafeAreaLayoutElement => {
 
   const onTabSelect = (index: number): void => {
     const selectedTabRoute: string = props.state.routeNames[index];
-    props.navigation.navigate(selectedTabRoute);
+    props.navigation.navigate(selectedTabRoute, { isReduxSauce: false });
   };
 
   const createNavigationTabForRoute = (route): TabElement => {
@@ -42,7 +45,7 @@ export const TodoTabBar = (props: TodoScreenProps): SafeAreaLayoutElement => {
   return (
     <SafeAreaLayout insets={SaveAreaInset.TOP}>
       <Toolbar
-        title='React Navigation Ex 🐱'
+        title='Todo Sample 🐱'
         onMenuItemSelect={onMenuItemSelect}
         menu={menu}
         backIcon={Icons.menuIcon}

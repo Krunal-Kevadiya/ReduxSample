@@ -1,6 +1,9 @@
-import { TodoData } from './TodoModel'
-import { SignUpData, SignUpDataSchema } from './SignUpModel'
-import { SignInData, SignInDataSchema } from './SignInModel'
-import { ResetPasswordData, ResetPasswordDataSchema } from './ResetPasswordModel'
+import { TodoData, TodoDataSchema } from './TodoModel';
+import { SignUpData, SignUpDataSchema } from './SignUpModel';
+import { SignInData, SignInDataSchema } from './SignInModel';
+import { ResetPasswordData, ResetPasswordDataSchema } from './ResetPasswordModel';
 
-export { TodoData, SignUpData, SignUpDataSchema, SignInData, SignInDataSchema, ResetPasswordData, ResetPasswordDataSchema };
+export { 
+    TodoData, SignUpData, SignUpDataSchema, SignInData, SignInDataSchema, 
+    ResetPasswordData, ResetPasswordDataSchema, TodoDataSchema 
+};

@@ -9,7 +9,7 @@ export const AboutScreen = (props: AboutScreenProps): SafeAreaLayoutElement => (
     style={styles.safeArea}
     insets={SaveAreaInset.TOP}>
     <Toolbar
-      title='React Navigation Ex 🐱'
+      title='Todo Sample 🐱'
       onBackPress={props.navigation.goBack}
     />
     <Divider/>

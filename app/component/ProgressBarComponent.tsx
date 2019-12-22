@@ -36,6 +36,6 @@ export const ProgressBar = withStyles(ProgressBarComponent, (theme) => ({
   },
   text: {
     marginHorizontal: horizontalScale(16)
-  },
+  }
 }));
 

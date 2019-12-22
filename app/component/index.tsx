@@ -4,4 +4,7 @@ import { ImageOverlay } from './ImageOverlayComponent';
 import { Toolbar, ToolbarMenu } from './ToolbarComponent';
 import { SafeAreaLayout, SafeAreaLayoutElement, SaveAreaInset } from './SafeAreaLayoutComponent';
 
-export { FormInput, ImageOverlay, Toolbar, ToolbarMenu, ProgressBar, SafeAreaLayout, SafeAreaLayoutElement, SaveAreaInset };
+export { 
+    FormInput, ImageOverlay, Toolbar, ToolbarMenu, ProgressBar, 
+    SafeAreaLayout, SafeAreaLayoutElement, SaveAreaInset
+ };

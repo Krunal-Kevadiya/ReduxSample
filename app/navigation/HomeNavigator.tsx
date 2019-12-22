@@ -9,7 +9,8 @@ import { createDrawerNavigator, DrawerContentComponentProps, DrawerNavigationPro
 import { BottomTabBarProps, BottomTabNavigationProp, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 type HomeDrawerNavigatorParams = {
-  [AppRoute.HOME]: undefined;
+  [AppRoute.HOME_REDUX]: undefined;
+  [AppRoute.HOME_REDUX_SAUCE]: undefined;
   [AppRoute.ABOUT]: undefined;
 }
 
@@ -20,12 +21,12 @@ type HomeBottomTabsNavigatorParams = {
 
 export type TodoTabNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<HomeBottomTabsNavigatorParams, AppRoute.TODO>,
-  DrawerNavigationProp<HomeDrawerNavigatorParams, AppRoute.HOME>
+  DrawerNavigationProp<HomeDrawerNavigatorParams, AppRoute.HOME_REDUX>
 >;
 
 export type ProfileTabNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<HomeBottomTabsNavigatorParams, AppRoute.PROFILE>,
-  DrawerNavigationProp<HomeDrawerNavigatorParams, AppRoute.HOME>
+  DrawerNavigationProp<HomeDrawerNavigatorParams, AppRoute.HOME_REDUX>
 >;
 
 export interface AboutScreenProps {
@@ -38,21 +39,11 @@ export type BottomHomeScreenProps = BottomTabBarProps & {
 };
 
 export type DrawerHomeScreenProps = DrawerContentComponentProps & {
-  navigation: DrawerNavigationProp<HomeDrawerNavigatorParams, AppRoute.HOME>;
+  navigation: DrawerNavigationProp<HomeDrawerNavigatorParams, AppRoute.HOME_REDUX>;
 };
 
 const Drawer = createDrawerNavigator<HomeDrawerNavigatorParams>();
 const BottomTab = createBottomTabNavigator<HomeBottomTabsNavigatorParams>();
-
-// FIXME(REACT-NAVIGATION-5): Not able to disable a pan gesture.
-//
-// In v4, it was possible with `navigationOptions: { gesturesEnabled: false }`
-// Basically, I want to do this to disable `back` navigation from home screen to auth
-// For Android, it can be covered with custom BackHandler.
-//
-// I'm not sure if it is a "true way", but I find it better
-// rather than hard-coding business logic in navigators
-// like it is described in https://reactnavigation.org/docs/en/next/auth-flow.html
 
 const HomeBottomNavigator = (): React.ReactElement => (
   // @ts-ignore: `tabBar` also contains a DrawerNavigationProp
@@ -74,9 +65,14 @@ export const HomeNavigator = (): React.ReactElement => (
   // @ts-ignore: `drawerContent` also contains a DrawerNavigationProp
   <Drawer.Navigator drawerContent={HomeDrawer}>
     <Drawer.Screen
-      name={AppRoute.HOME}
+      name={AppRoute.HOME_REDUX}
       component={HomeBottomNavigator}
-      options={{ title: 'Home', drawerIcon: Icons.homeIcon }}
+      options={{ title: 'Redux', drawerIcon: Icons.homeIcon }}
+    />
+    <Drawer.Screen
+      name={AppRoute.HOME_REDUX_SAUCE}
+      component={HomeBottomNavigator}
+      options={{ title: 'Redux Sauce', drawerIcon: Icons.homeIcon }}
     />
     <Drawer.Screen
       name={AppRoute.ABOUT}

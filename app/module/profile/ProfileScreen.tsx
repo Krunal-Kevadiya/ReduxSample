@@ -10,7 +10,7 @@ export const ProfileScreen = (props: ProfileScreenProps): SafeAreaLayoutElement 
     style={styles.safeArea}
     insets={SaveAreaInset.TOP}>
     <Toolbar
-      title='React Navigation Ex 🐱'
+      title='Todo Sample 🐱'
       backIcon={Icons.menuIcon}
       onBackPress={props.navigation.toggleDrawer}
     />

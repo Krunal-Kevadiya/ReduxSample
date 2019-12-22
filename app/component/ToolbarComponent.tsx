@@ -1,7 +1,10 @@
 import React from 'react';
 import { Icons } from '../theme';
 import { ImageProps } from 'react-native';
-import { OverflowMenu, OverflowMenuItemType, StyleType, TopNavigation, TopNavigationAction, TopNavigationActionElement, TopNavigationProps } from 'react-native-ui-kitten';
+import { 
+  OverflowMenu, OverflowMenuItemType, StyleType, TopNavigation, TopNavigationAction, 
+  TopNavigationActionElement, TopNavigationProps 
+} from 'react-native-ui-kitten';
 
 export type ToolbarMenu = OverflowMenuItemType[];
 

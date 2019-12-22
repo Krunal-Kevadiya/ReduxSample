@@ -18,7 +18,7 @@ export const SignUpScreen = (props: SignUpScreenProps): LayoutElement => {
   };
 
   const navigateHome = (): void => {
-    props.navigation.navigate(AppRoute.HOME);
+    props.navigation.navigate(AppRoute.HOME_REDUX);
   };
 
   const navigateSignIn = (): void => {
